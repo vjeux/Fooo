@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<units>
+		
+		<unit>
+			<name>Treant - Adviser</name>
+			<sound>Sounds/unit/treant_adviser/</sound>
+			<id>1</id>
+		</unit>
+		
+		<unit>
+			<name>Wooden Builder</name>
+			<id>2</id>
+			<race>0</race>
+			<sound>Sounds/unit/treant_peon/</sound>
+			<icon>Textures/Icons/Units/TreantMalf.tga</icon>
+			<model>Models/Units/Treants/TreantMalf.mdx</model>
+			<modelscale>3</modelscale>
+			<modelsize>6</modelsize>
+			<size>4</size>
+			<type>Infrantry</type>
+			<speed>10</speed>
+			<res1cost>50</res1cost>
+			<hp>500</hp>
+			<hpregen>1</hpregen>
+			<aggressivity>passive</aggressivity>
+			<damage>10</damage>
+			<defense>0</defense>
+			<atk_speed>3000</atk_speed>
+			<atk_range>100</atk_range>
+			<repairer>-1</repairer>
+			<res1cost>100</res1cost>
+			<res2cost>0</res2cost>
+			<buildingtime>4000</buildingtime>
+			<training>5</training>
+			<buildings>
+				<buildingid>7</buildingid>
+				<buildingid>8</buildingid>
+				<buildingid>9</buildingid>
+			</buildings>
+			<tooltip>Your starting unit, it can create all three buildings available but has low defense and deals a small amount of damages</tooltip>
+		</unit>
+		
+		<unit>
+			<name>Guardian of the Forest</name>
+			<id>4</id>
+			<race>0</race>
+			<sound>Sounds/unit/treant_footman/</sound>
+			<icon>Textures/Icons/Units/TreantFootman.tga</icon>
+			<model>Models/Units/Treants/TreantFootman.mdx</model>
+			<modelscale>10</modelscale>
+			<modelsize>10</modelsize>
+			<size>4</size>
+			<res1cost>100</res1cost>
+			<type>Infrantry</type>
+			<speed>15</speed>
+			<hp>1200</hp>
+			<hpregen>2</hpregen>
+			<aggressivity>aggressive</aggressivity>
+			<damage>100</damage>
+			<defense>3</defense>
+			<atk_speed>1000</atk_speed>
+			<atk_range>100</atk_range>
+			<buildingtime>10000</buildingtime>
+			<tooltip>Your main fighting unit in close combat, has a good defense, and a pretty good attack once in range.</tooltip>
+		</unit>
+
+		<unit>
+			<name>Sharpshooter</name>
+			<id>3</id>
+			<race>0</race>
+			<sound>Sounds/unit/treant_archer/</sound>
+			<icon>Textures/Icons/Units/TreantArcher.tga</icon>
+			<model>Models/Units/Treants/TreantArcher.mdx</model>
+			<modelscale>10</modelscale>
+			<modelsize>10</modelsize>
+			<size>4</size>
+			<res1cost>100</res1cost>
+			<type>Ranged</type>
+			<speed>17</speed>
+			<hp>800</hp>
+			<hpregen>2</hpregen>
+			<aggressivity>aggressive</aggressivity>
+			<damage>120</damage>
+			<defense>1</defense>
+			<atk_speed>800</atk_speed>
+			<atk_range>30</atk_range>
+			<buildingtime>10000</buildingtime>
+			<tooltip>Your main unit for ranged battle, it can move quickly and can deal important damages from a long distance, but it is weak once in close combat</tooltip>
+		</unit>
+
+		<unit>
+			<name>Will of Dagda</name>
+			<id>5</id>
+			<race>0</race>
+			<sound>Sounds/unit/treant_monk/</sound>
+			<icon>Textures/Icons/Units/TreantHealer.tga</icon>
+			<model>Models/Units/Treants/TreantMage.mdx</model>
+			<modelscale>10</modelscale>
+			<modelsize>10</modelsize>
+			<size>4</size>
+			<res1cost>150</res1cost>
+			<type>Caster</type>
+			<speed>17</speed>
+			<hp>600</hp>
+			<mp>1000</mp>
+			<hpregen>2</hpregen>
+			<mpregen>5</mpregen>
+			<aggressivity>passive</aggressivity>
+			<damage>-300</damage>
+			<atk_speed>2500</atk_speed>
+			<atk_range>500</atk_range>
+			<buildingtime>8000</buildingtime>
+			<tooltip>A support unit, it can heal any friendly unit with his special ability.</tooltip>
+		</unit>
+	
+		<unit>
+			<name>Orion, Keeper of the Woods</name>
+			<id>6</id>
+			<race>0</race>
+			<sound>Sounds/unit/treant_hero/</sound>
+			<icon>Textures/Icons/Units/TreantHero.tga</icon>
+			<model>Models/Units/Treants/TreantWarrior.mdx</model>
+			<modelscale>13</modelscale>
+			<modelsize>13</modelsize>
+			<size>4</size>
+			<res1cost>300</res1cost>
+			<res2cost>10</res2cost>
+			<type>Hero</type>
+			<speed>17</speed>
+			<hp>2000</hp>
+			<mp>500</mp>
+			<hpregen>4</hpregen>
+			<mpregen>0</mpregen>
+			<aggressivity>aggressive</aggressivity>
+			<damage>100</damage>
+			<defense>3</defense>
+			<atk_speed>500</atk_speed>
+			<atk_range>100</atk_range>
+			<buildingtime>25000</buildingtime>
+			<tooltip>Your unique hero, a strong, powerful and resistant unit. Preserve his life at all costs.</tooltip>
+		</unit>
+		
+		<unit>
+			<name>Yggdrasil, Tree of Life</name>
+			<id>7</id>
+			<race>0</race>
+			<icon>Textures/Icons/Units/WoodenVillage.tga</icon>
+			<model>Models/Buildings/WoodenVillage.mdx</model>
+			<modelscale>5</modelscale>
+			<modelsize>30</modelsize>
+			<size>16</size>
+			<res1cost>500</res1cost>
+			<hp>10000</hp>
+			<isbuilding>-1</isbuilding>
+			<buildingtime>40000</buildingtime>
+			<buildings>
+				<buildingid>2</buildingid>
+			</buildings>
+			<!-- 
+			<upgrades>
+				<upgradeid>1</upgradeid>
+			</upgrades> 
+			-->
+			<tooltip>The World Tree, it is your main base, you can create builders and launch upgrade with it.</tooltip>
+		</unit>
+
+		<unit>
+			<name>Ancient Tree of War</name>
+			<id>8</id>
+			<race>0</race>
+			<icon>Textures/Icons/Units/DruidHut.tga</icon>
+			<model>Models/Buildings/DruidHut.mdx</model>
+			<modelscale>5</modelscale>
+			<modelsize>30</modelsize>
+			<size>16</size>
+			<res1cost>300</res1cost>
+			<res2cost>0</res2cost>
+			<hp>5000</hp>
+			<hpregen>0</hpregen>
+			<isbuilding>-1</isbuilding>
+			<buildingtime>20000</buildingtime>
+			<buildings>
+				<buildingid>3</buildingid>
+				<buildingid>4</buildingid>
+				<buildingid>5</buildingid>
+				<buildingid>6</buildingid>
+			</buildings>
+			<tooltip>A large tree designed to be a a real training camp for young treants of the Forest of Broceliande. In this building you can create all your fighting units. </tooltip>
+		</unit>
+		
+		<unit>
+			<name>Hearth Tree</name>
+			<id>9</id>
+			<race>0</race>
+			<icon>Textures/Icons/Units/TreantHouse.tga</icon>
+			<model>Models/Buildings/TreantHouse.mdx</model>
+			<modelscale>5</modelscale>
+			<modelsize>15</modelsize>
+			<size>9</size>
+			<res1cost>100</res1cost>
+			<pop>10</pop>
+			<hp>2000</hp>
+			<isbuilding>-1</isbuilding>
+			<buildingtime>10000</buildingtime>
+			<training>-1</training>
+			<tooltip>A living place for all treants, if a unit enters a building, it will increase your gold income.</tooltip>
+		</unit>
+
+		<!-- Rats -->
+		
+		<unit>
+			<name>Rat - Adviser</name>
+			<sound>Sounds/unit/rat_adviser/</sound>
+			<id>11</id>
+		</unit>
+		
+		<unit>
+			<name>Slave Worker</name>
+			<id>12</id>
+			<race>1</race>
+			<sound>Sounds/unit/rat_peon/</sound>
+			<icon>Textures/Icons/Units/RatPeon.tga</icon>
+			<model>Models/Units/Rats/RatOgre.mdx</model>
+			<modelscale>4</modelscale>
+			<modelsize>8</modelsize>
+			<size>4</size>
+			<type>Infrantry</type>
+			<speed>10</speed>
+			<res1cost>50</res1cost>
+			<hp>500</hp>
+			<hpregen>2</hpregen>
+			<aggressivity>passive</aggressivity>
+			<damage>10</damage>
+			<atk_speed>3000</atk_speed>
+			<atk_range>100</atk_range>
+			<repairer>-1</repairer>
+			<buildingtime>4000</buildingtime>
+			<buildings>
+				<buildingid>17</buildingid>
+				<buildingid>18</buildingid>
+				<buildingid>19</buildingid>
+			</buildings>
+			<tooltip>One of the numerous rat slave in the Clan, it is a weak unit only designed for construction, it is useless in combat</tooltip>
+		</unit>
+		
+		<unit>
+			<name>Night Runner</name>
+			<id>14</id>
+			<race>1</race>
+			<sound>Sounds/unit/rat_footman/</sound>
+			<icon>Textures/Icons/Units/RatRunner.tga</icon>
+			<model>Models/Units/Rats/RatRunner.mdx</model>
+			<modelscale>10</modelscale>
+			<modelsize>10</modelsize>
+			<size>4</size>
+			<res1cost>100</res1cost>
+			<type>Infrantry</type>
+			<speed>15</speed>
+			<hp>1200</hp>
+			<hpregen>2</hpregen>
+			<aggressivity>aggressive</aggressivity>
+			<damage>100</damage>
+			<defense>3</defense>
+			<atk_speed>1000</atk_speed>
+			<atk_range>100</atk_range>
+			<buildingtime>10000</buildingtime>
+			<tooltip>A vicious close combat unit, trained in the deep sewers. It has a high resistance and can deal a fairly good amount of damages.</tooltip>
+		</unit>
+
+		<unit>
+			<name>Stealth Ranger</name>
+			<id>13</id>
+			<race>1</race>
+			<sound>Sounds/unit/rat_archer/</sound>
+			<icon>Textures/Icons/Units/RatRanger.tga</icon>
+			<model>Models/Units/Rats/RatRanger.mdx</model>
+			<modelscale>10</modelscale>
+			<modelsize>10</modelsize>
+			<size>4</size>
+			<res1cost>100</res1cost>
+			<type>Ranged</type>
+			<speed>17</speed>
+			<hp>800</hp>
+			<hpregen>2</hpregen>
+			<aggressivity>aggressive</aggressivity>
+			<damage>120</damage>
+			<atk_speed>1000</atk_speed>
+			<atk_range>30</atk_range>
+			<buildingtime>10000</buildingtime>
+			<tooltip>A quick unit equipped with a bow that can deal high damages from a long range.</tooltip>
+		</unit>
+
+		<unit>
+			<name>Plague Monk</name>
+			<id>15</id>
+			<race>1</race>
+			<sound>Sounds/unit/rat_monk/</sound>
+			<icon>Textures/Icons/Units/RatMonk.tga</icon>
+			<model>Models/Units/Rats/RatMonk.mdx</model>
+			<modelscale>10</modelscale>
+			<modelsize>10</modelsize>
+			<size>4</size>
+			<res1cost>150</res1cost>
+			<type>Caster</type>
+			<speed>17</speed>
+			<hp>600</hp>
+			<mp>1000</mp>
+			<hpregen>2</hpregen>
+			<mpregen>5</mpregen>
+			<aggressivity>passive</aggressivity>
+			<damage>-300</damage>
+			<atk_speed>2500</atk_speed>
+			<atk_range>500</atk_range>
+			<buildingtime>8000</buildingtime>
+			<tooltip>A caster bearer of the plague. Thanks to this it has acquired magical powers like the ability to heal friendly units.</tooltip>
+		</unit>
+	
+		<unit>
+			<name>Squeek, Master Assassin</name>
+			<id>16</id>
+			<race>1</race>
+			<sound>Sounds/unit/rat_hero/</sound>
+			<icon>Textures/Icons/Units/RatHero.tga</icon>
+			<model>Models/Units/Rats/RatHero.mdx</model>
+			<modelscale>10</modelscale>
+			<modelsize>10</modelsize>
+			<size>4</size>
+			<res1cost>300</res1cost>
+			<res2cost>10</res2cost>
+			<type>Hero</type>
+			<speed>17</speed>
+			<hp>2000</hp>
+			<mp>500</mp>
+			<hpregen>4</hpregen>
+			<mpregen>0</mpregen>
+			<aggressivity>aggressive</aggressivity>
+			<damage>100</damage>
+			<atk_speed>500</atk_speed>
+			<atk_range>100</atk_range>
+			<buildingtime>25000</buildingtime>
+			<tooltip>Your unique hero, it is a quick and deadly unit, capable of high damages in close combat and Squeek has a high defense thanks to his quickness and his ability to dodge attacks.</tooltip>
+		</unit>
+		
+		<unit>
+			<name>Headquarters of the Clan</name>
+			<id>17</id>
+			<race>1</race>
+			<icon>Textures/Icons/Units/RatCamp3.tga</icon>
+			<model>Models/Buildings/RatCamp3.mdx</model>
+			<modelscale>5</modelscale>
+			<modelsize>30</modelsize>
+			<size>16</size>
+			<res1cost>500</res1cost>
+			<hp>10000</hp>
+			<isbuilding>-1</isbuilding>
+			<buildingtime>40000</buildingtime>
+			<buildings>
+				<buildingid>12</buildingid>
+			</buildings>
+			<!--
+			<upgrades>
+				<upgradeid>1</upgradeid>
+			</upgrades>
+			-->
+			<tooltip>Your main building, the place were all decisions regarding general strategy are taken. In this place you can launch upgrades to improve your units.</tooltip>
+		</unit>
+
+		<unit>
+			<name>Training Camp</name>
+			<id>18</id>
+			<race>1</race>
+			<icon>Textures/Icons/Units/RatCamp1.tga</icon>
+			<model>Models/Buildings/RatCamp1.mdx</model>
+			<modelscale>5</modelscale>
+			<modelsize>30</modelsize>
+			<size>16</size>
+			<res1cost>300</res1cost>
+			<hp>5000</hp>
+			<isbuilding>-1</isbuilding>
+			<buildingtime>20000</buildingtime>
+			<buildings>
+				<buildingid>13</buildingid>
+				<buildingid>14</buildingid>
+				<buildingid>15</buildingid>
+				<buildingid>16</buildingid>
+			</buildings>
+			<tooltip>An highly disciplined training camp for all younglings warriors to be. With this building you can create every fight unit available.</tooltip>
+		</unit>
+
+		<unit>
+			<name>Infested Forest Tree</name>
+			<id>19</id>
+			<race>1</race>
+			<icon>Textures/Icons/Units/RatHouse.tga</icon>
+			<model>Models/Buildings/RatHouse.mdx</model>
+			<modelscale>5</modelscale>
+			<modelsize>15</modelsize>
+			<size>9</size>
+			<res1cost>100</res1cost>
+			<pop>10</pop>
+			<hp>2000</hp>
+			<isbuilding>-1</isbuilding>
+			<buildingtime>10000</buildingtime>
+			<tooltip>A tree from the Forest of Broceliande infested by the plague, it has became an hometown for rats warriors when they are not fighting.</tooltip>
+		</unit>
+
+		<unit>
+			<name>Tree 1</name>
+			<id>21</id>
+			<model>Models/Doodads/Tree/Tree1.mdx</model>
+			<modelscale>20</modelscale>
+			<modelsize>20</modelsize>
+			<size>16</size>
+			<isbuilding>-1</isbuilding>
+		</unit>
+		
+		<unit>
+			<name>Tree 2</name>
+			<id>21</id>
+			<model>Models/Doodads/Tree/Tree2.mdx</model>
+			<modelscale>20</modelscale>
+			<modelsize>20</modelsize>
+			<size>16</size>
+			<isbuilding>-1</isbuilding>
+		</unit>
+		
+		<unit>
+			<name>Tree 3</name>
+			<id>21</id>
+			<model>Models/Doodads/Tree/Tree3.mdx</model>
+			<modelscale>20</modelscale>
+			<modelsize>20</modelsize>
+			<size>16</size>
+			<isbuilding>-1</isbuilding>
+		</unit>
+		
+	</units>
+

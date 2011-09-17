@@ -1,0 +1,193 @@
+<Ui>
+	<Frame name="FormHandler" EnableKeyboard="true">
+		<OnKeyDown>
+			HandleFormKey(arg1);
+		</OnKeyDown>
+	</Frame>
+
+	
+	
+	
+	
+	<Frame name="ButtonTemplate" virtual="true" EnableMouse="true">
+		<Texture name="$parentEnabled" path="Textures/Interface/Buttons.tga" top="1" bottom="14" left="1" right="65" />
+		<Texture name="$parentPushed" hidden="true" path="Textures/Interface/Buttons.tga" top="26" bottom="39" left="1" right="65" />
+		<Texture name="$parentDisabled" hidden="true" path="Textures/Interface/Buttons.tga" top="51" bottom="64" left="1" right="65" />
+		<Texture name="$parentHighlight" hidden="true" path="Textures/Interface/Buttons.tga" top="76" bottom="89" left="1" right="65" />
+		<FontString name="$parentText" text="Button">
+			<Anchor point="CENTER" relativePoint="CENTER" />
+		</FontString>
+		<Scripts>
+			<OnEnter>
+				if not IsVisible(self..'Disabled') then
+					SetVisible(self..'Highlight', true);
+				end
+			</OnEnter>
+			<OnLeave>
+				SetVisible(self..'Highlight', false);
+			</OnLeave>
+			<OnMouseDown>
+				if not IsVisible(self..'Disabled') and (arg1 == 1) then -- Left Mouse
+					ToggleButton(self, true);
+					SetX(self..'Text', -2);
+					SetY(self..'Text', 2);
+				end
+			</OnMouseDown>
+			<OnMouseUp>
+				if not IsVisible(self..'Disabled') and (arg1 == 1) then -- Left Mouse
+					ToggleButton(self, false);
+					SetX(self..'Text', 0);
+					SetY(self..'Text', 0);
+					Scripts[GetParent(self)](self, arg1);
+				end
+			</OnMouseUp>
+			<OnEvent>
+				if (event == EVENT_ONMOUSEUP) then
+					ToggleButton(self, false);
+					SetX(self..'Text', 0);
+					SetY(self..'Text', 0);
+				end
+			</OnEvent>
+		</Scripts>
+	</Frame>
+
+
+
+	<Frame name="ListBoxElementTemplate" height="30" EnableMouse="true" virtual="true">
+		<Texture name="$parentBackground" path="Textures/Interface/ListBox_Background.tga" hidden="true"/>
+		<Texture name="$parentBackgroundLight" path="Textures/Interface/ListBox_BackgroundLight.tga" hidden="true"/>
+		<FontString name="$parentIP" text="Element">
+			<Anchor point="LEFT" relativePoint="LEFT" x="300" />
+		</FontString>
+		<FontString name="$parentName" text="Element">
+			<Anchor point="LEFT" relativePoint="LEFT" x="20" />
+		</FontString>
+		<FontString name="$parentCount" text="Element">
+			<Anchor point="LEFT" relativePoint="LEFT" x="500" />
+		</FontString>
+		<FontString name="$parentMap" text="Element">
+			<Anchor point="RIGHT" relativePoint="RIGHT" x="-20" />
+		</FontString>
+		
+		<FontString name="$parentMap2" text="Element">
+			<Anchor point="LEFT" relativePoint="LEFT" x="10" />
+		</FontString>
+		
+		<FontString name="$parentNick" text="Element">
+			<Anchor point="LEFT" relativePoint="LEFT" x="20" />
+		</FontString>
+		<FontString name="$parentPlayerIP" text="Element">
+			<Anchor point="LEFT" relativePoint="LEFT" x="260" />
+		</FontString>
+		<FontString name="$parentRace" text="Element">
+			<Anchor point="CENTER" relativePoint="LEFT" x="410" />
+		</FontString>
+		<Texture name="$parentTexture" text="Element" width="40" height="18" path="Textures\TeamColor\TeamColor00.tga">
+			<Anchor point="LEFT" relativePoint="LEFT" x="475" />
+		</Texture>
+		<FontString name="$parentTeam" text="Element">
+			<Anchor point="LEFT" relativePoint="LEFT" x="555" />
+		</FontString>
+		<Scripts>
+			<OnMouseUp>
+				ListBoxOnClick(self);
+			</OnMouseUp>
+			<OnEnter>
+				ListBoxOnEnter(self);
+			</OnEnter>
+			<OnLeave>
+				SetVisible(self..'BackgroundLight', false);
+			</OnLeave>
+		</Scripts>
+	</Frame>
+
+	<Frame name="ListBoxTemplate" Border="Textures/Interface/Dialog_Borders.tga" BorderSize="16" virtual="true" Background="Textures/Interface/Dialog_Background.tga">
+		<Frame name="$parentCapsule" EnableKeyboard="true" EnableMouse="true">
+			<Anchor point="CENTER" relativePoint="CENTER" />
+			<Scripts>
+				<OnMouseDown>
+					ListBoxOnMouseDown(self);
+				</OnMouseDown>
+				<OnKeyDown>
+					ListBoxOnKeyDown(self);
+				</OnKeyDown>
+			</Scripts>
+			<Frame name="$parentElement1" inherit="ListBoxElementTemplate"/>
+			<Frame name="$parentElement2" inherit="ListBoxElementTemplate">
+				<Anchor point="TOP" relativeTo="$parentElement1" relativePoint="BOTTOM" y="2" />
+			</Frame>
+			<Frame name="$parentElement3" inherit="ListBoxElementTemplate">
+				<Anchor point="TOP" relativeTo="$parentElement2" relativePoint="BOTTOM" y="2" />
+			</Frame>
+			<Frame name="$parentElement4" inherit="ListBoxElementTemplate">
+				<Anchor point="TOP" relativeTo="$parentElement3" relativePoint="BOTTOM" y="2" />
+			</Frame>
+			<Frame name="$parentElement5" inherit="ListBoxElementTemplate">
+				<Anchor point="TOP" relativeTo="$parentElement4" relativePoint="BOTTOM" y="2" />
+			</Frame>
+			<Frame name="$parentElement6" inherit="ListBoxElementTemplate">
+				<Anchor point="TOP" relativeTo="$parentElement5" relativePoint="BOTTOM" y="2" />
+			</Frame>
+			<Frame name="$parentElement7" inherit="ListBoxElementTemplate">
+				<Anchor point="TOP" relativeTo="$parentElement6" relativePoint="BOTTOM" y="2" />
+			</Frame>
+			<Frame name="$parentElement8" inherit="ListBoxElementTemplate">
+				<Anchor point="TOP" relativeTo="$parentElement7" relativePoint="BOTTOM" y="2" />
+			</Frame>
+			<Frame name="$parentElement9" inherit="ListBoxElementTemplate">
+				<Anchor point="TOP" relativeTo="$parentElement8" relativePoint="BOTTOM" y="2" />
+			</Frame>
+			<Frame name="$parentElement10" inherit="ListBoxElementTemplate">
+				<Anchor point="TOP" relativeTo="$parentElement9" relativePoint="BOTTOM" y="2" />
+			</Frame>
+			<Frame name="$parentElement11" inherit="ListBoxElementTemplate">
+				<Anchor point="TOP" relativeTo="$parentElement10" relativePoint="BOTTOM" y="2" />
+			</Frame>
+			<Frame name="$parentElement12" inherit="ListBoxElementTemplate">
+				<Anchor point="TOP" relativeTo="$parentElement11" relativePoint="BOTTOM" y="2" />
+			</Frame>
+			<Frame name="$parentElement13" inherit="ListBoxElementTemplate">
+				<Anchor point="TOP" relativeTo="$parentElement12" relativePoint="BOTTOM" y="2" />
+			</Frame>
+			<Frame name="$parentElement14" inherit="ListBoxElementTemplate">
+				<Anchor point="TOP" relativeTo="$parentElement13" relativePoint="BOTTOM" y="2" />
+			</Frame>
+			<Frame name="$parentElement15" inherit="ListBoxElementTemplate">
+				<Anchor point="TOP" relativeTo="$parentElement14" relativePoint="BOTTOM" y="2" />
+			</Frame>
+			<Frame name="$parentElement16" inherit="ListBoxElementTemplate">
+				<Anchor point="TOP" relativeTo="$parentElement15" relativePoint="BOTTOM" y="2" />
+			</Frame>
+		</Frame>
+	</Frame>
+
+	<Frame name="TextBoxTemplate" Border="Textures/Interface/Dialog_Borders.tga" BorderSize="16" virtual="true" Background="Textures/Interface/Dialog_Background.tga" EnableKeyboard="true" EnableMouse="true">
+		<FontString name="$parentText">
+			<Anchor point="LEFT" relativePoint="LEFT" x="15" y="-2" />
+		</FontString>
+		<FontString name="$parentPipe" text="|" hidden="true">
+			<Anchor point="LEFT" relativePoint="LEFT" x="15" y="-2" />
+		</FontString>
+		<Scripts>
+			<OnMouseDown>
+				if Focus ~= self then
+					TextBoxPosition = strlen(GetText(self..'Text'));
+					TextBox_UpdatePipePosition();
+				end
+				Focus = self;
+			</OnMouseDown>
+			<OnUpdate>
+				if Focus == self and mod(Time(), 1000) > 500 then
+					SetVisible(self..'Pipe', true);
+				else
+					SetVisible(self..'Pipe', false);
+				end
+			</OnUpdate>
+			<OnKeyDown>
+				if Focus == self then
+					TextBox_OnKeyDown(self, arg1);
+				end
+			</OnKeyDown>
+		</Scripts>
+	</Frame>
+</Ui>

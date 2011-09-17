@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<upgrades>
+		<upgrade>
+			<name>Unleash Treants Power</name>
+			<id>1</id>
+			<icon>Upgrade1.tga</icon>
+			<targetsid>12</targetsid>
+			<res1cost>100</res1cost>
+			<res2cost>100</res2cost>
+			<effects>
+				<size>5</size>
+				<hp>150</hp>
+				<attack>0</attack>
+				<defense>0</defense>
+				<damage>0</damage>
+				<speed>25</speed>
+				<special/>
+			</effects>
+			<tooltip>This upgrade will unleash the hidden fury of your mighty treants minions.</tooltip>			
+		</upgrade>
+	</upgrades>
+

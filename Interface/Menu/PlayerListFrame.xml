@@ -1,0 +1,41 @@
+<Ui>
+
+	<Frame name="PlayerListFrame" hidden="true"> 
+		<Anchor relativeTo="MenuFrame" />
+		<FontString name="PlayersLabel" text="Players">
+			<Anchor x="128" y="100" />
+		</FontString>
+		<FontString name="PlayersIPLabel" text="IP">
+			<Anchor point="LEFT" relativeTo="PlayersLabel" relativePoint="LEFT" x="285" />
+		</FontString>
+		<FontString name="PlayersRaceLabel" text="Race">
+			<Anchor point="LEFT" relativeTo="PlayersLabel" relativePoint="LEFT" x="375" />
+		</FontString>
+		<FontString name="PlayersTeamLabel" text="Color">
+			<Anchor point="LEFT" relativeTo="PlayersLabel" relativePoint="LEFT" x="455" />
+		</FontString>
+		<FontString name="PlayersTeamLabel" text="Team">
+			<Anchor point="LEFT" relativeTo="PlayersLabel" relativePoint="LEFT" x="515" />
+		</FontString>
+		<Frame name="PlayerList" inherit="ListBoxTemplate" width="600" height="500">
+			<Anchor point="TOPLEFT" relativeTo="PlayerListFrame" relativePoint="TOPLEFT" x="100" y="130" />
+			<Scripts>
+				<OnLoad>
+					PlayerList_OnLoad();
+				</OnLoad>
+				<OnUpdate>
+					PlayerList_OnUpdate();
+				</OnUpdate>
+			</Scripts>
+		</Frame>
+		<Frame name="StartGame" inherit="MenuButtonTemplate">
+			<Anchor point="TOPLEFT" relativeTo="PlayerList" relativePoint="TOPRIGHT" x="20" />
+			<Scripts>
+				<OnLoad>
+					StartGame_OnLoad();
+				</OnLoad>
+			</Scripts>
+		</Frame>
+	</Frame>
+
+</Ui>

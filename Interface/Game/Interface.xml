@@ -1,0 +1,10 @@
+<Ui>
+	<Include lua="Interface/compat.lua" />
+	<Include lua="Interface/Interface.lua" />
+	<Include xml="Interface/Templates.xml" lua="Interface/Templates.lua" />
+	<Include xml="Interface/Game/FloatingBars.xml" lua="Interface/Game/FloatingBars.lua" />
+	<Include xml="Interface/Game/InterfaceLayout.xml" lua="Interface/Game/InterfaceLayout.lua" />
+	<Include xml="Interface/Game/Chat.xml" lua="Interface/Game/Chat.lua" />
+	<Include xml="Interface/Game/CommandButtons.xml" lua="Interface/Game/CommandButtons.lua" />
+	<Include xml="Interface/Game/Loose.xml" />
+</Ui>

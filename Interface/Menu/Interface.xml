@@ -1,0 +1,10 @@
+<Ui>
+	<Include lua="Interface/compat.lua" />
+	<Include lua="Interface/Interface.lua" />
+	<Include xml="Interface/Templates.xml" lua="Interface/Templates.lua" />
+	<Include xml="Interface/Menu/Menu.xml" lua="Interface/Menu/Menu.lua" />
+	<Include xml="Interface/Menu/ServerListFrame.xml" lua="Interface/Menu/ServerListFrame.lua" />
+	<Include xml="Interface/Menu/PlayerListFrame.xml" lua="Interface/Menu/PlayerListFrame.lua" />
+	<Include xml="Interface/Menu/CreateServerFrame.xml" lua="Interface/Menu/CreateServerFrame.lua" />
+	<Include xml="Interface/Menu/Credits.xml" lua="Interface/Menu/Credits.lua" />
+</Ui>

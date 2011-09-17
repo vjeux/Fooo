@@ -1,0 +1,8 @@
+<Ui>
+	<Frame name="TooltipLineTemplate" virtual="true">
+	</Frame>
+
+	<Frame name="Tooltip">
+		
+	</Frame>
+</Ui>

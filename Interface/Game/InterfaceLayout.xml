@@ -1,0 +1,54 @@
+<Ui>
+	<Frame name="InterfaceLayout">
+		<Texture name="InterfaceLayoutTop1" path="Textures/Interface/Tile1.tga" width="512" height="128"
+			top="0" left="0" bottom="25" right="100">
+			<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="0"/>
+		</Texture>
+		<Texture name="InterfaceLayoutTop2" path="Textures/Interface/Tile2.tga" width="512" height="128"
+			top="0" left="0" bottom="25" right="100">
+			<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="512"/>
+		</Texture>
+		<Texture name="InterfaceLayoutTop3" path="Textures/Interface/Tile3.tga" width="512" height="128"
+			top="0" left="0" bottom="25" right="100">
+			<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" x="-64"/>
+		</Texture>
+		<Texture name="InterfaceLayoutTop4" path="Textures/Interface/Tile4.tga" width="64" height="128"
+			top="0" left="0" bottom="25" right="100">
+			<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" x="0"/>
+		</Texture>
+		
+		<Texture name="InterfaceLayoutBottom1" path="Textures/Interface/Tile1.tga" width="512" height="384"
+			top="25" left="0" bottom="100" right="100">
+			<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" x="0"/>
+		</Texture>
+		<Texture name="InterfaceLayoutBottom2" path="Textures/Interface/Tile2.tga" width="512" height="384"
+			top="25" left="0" bottom="100" right="100">
+			<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" x="512"/>
+		</Texture>
+		<Texture name="InterfaceLayoutBottom3" path="Textures/Interface/Tile3.tga" width="512" height="384"
+			top="25" left="0" bottom="100" right="100">
+			<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" x="-64"/>
+		</Texture>
+		<Texture name="InterfaceLayoutBottomInventory" path="Textures/Interface/iv.tga" width="256" height="384"
+			top="25" left="1" bottom="100" right="100">
+			<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" x="-399"/>
+		</Texture>
+		<Texture name="InterfaceLayoutBottom4" path="Textures/Interface/Tile4.tga" width="64" height="384"
+			top="25" left="0" bottom="100" right="100">
+			<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" x="0"/>
+		</Texture>
+		
+		<FontString name="FPS" text="FPS : 251" hidden="true">
+			<Anchor point="BOTTOM" relativePoint="BOTTOM" y="-400"/>
+		</FontString>
+		
+		<Scripts>
+			<OnUpdate>
+				InterfaceOnUpdate(arg1);
+			</OnUpdate>
+			<OnKeyDown>
+				InterfaceOnKeyDown(arg1);
+			</OnKeyDown>
+		</Scripts>
+	</Frame>
+</Ui>

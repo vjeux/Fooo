@@ -1,0 +1,208 @@
+<Ui>
+	<FontString name="TitleTemplate" virtual="true" font="Thorndale32" r="255" g="200" b="0" />
+	<FontString name="SubTitleTemplate1" virtual="true" font="Thorndale20" r="255" g="200" b="0">
+		<Anchor point="TOP" relativePoint="BOTTOMRIGHT" x="10" y="20"/>
+	</FontString>
+	<FontString name="SubTitleTemplate" virtual="true" font="Thorndale20" r="255" g="200" b="0" />
+	
+	
+	<FontString name="LabelTemplate1" virtual="true" font="Thorndale16" r="255" g="200" b="0">
+		<Anchor point="TOPRIGHT" relativePoint="BOTTOM" x="-10" y="5"/>
+	</FontString>
+			
+	<FontString name="LabelTemplate" virtual="true" font="Thorndale16" r="255" g="200" b="0">
+		<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" y="30"/>
+	</FontString>
+	
+	
+	<FontString name="TextTemplate" virtual="true" font="Thorndale16" r="255" g="255" b="255">
+		<Anchor point="LEFT" relativePoint="RIGHT" x="20" />
+	</FontString>
+	
+	<Frame name="CreditsFrame" width="1088" height="1088" hidden="true">
+		<Anchor relativeTo="MenuFrame" point="TOPLEFT" anchorpoint="TOPLEFT"/>
+		
+		<FontString name="$Site" text="Stay tuned on www.fooo.fr" inherit="TextTemplate">
+			<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" y="-40" x="-50" />
+		</FontString>
+		
+		<FontString name="$Title" text="Credits" inherit="TitleTemplate">
+			<Anchor point="TOP" relativePoint="TOP" y="30"/>
+		</FontString>
+		
+		<!-- Team -->
+		<FontString name="$Team" text="Fooo Team" inherit="SubTitleTemplate">
+			<Anchor point="TOP" relativeTo="$Title" relativePoint="BOTTOM" y="20"/>
+		</FontString>
+		
+		<FontString name="$VladLabel" text="Path Finding, Collisions" inherit="LabelTemplate1">
+			<Anchor relativeTo="$Team"/>
+		</FontString>
+		<FontString name="$VladText" text="Vladimir 'Vizigr0u' Nachbaur" inherit="TextTemplate">
+			<Anchor relativeTo="$VladLabel" />
+		</FontString>
+		
+		<FontString name="$VjeuxLabel" text="3D Engine, User Interface" inherit="LabelTemplate">
+			<Anchor relativeTo="$VladLabel" />
+		</FontString>
+		<FontString name="$VjeuxText" text="Christopher 'Vjeux' Chedeau" inherit="TextTemplate">
+			<Anchor relativeTo="$VjeuxLabel" />
+		</FontString>
+		
+		<FontString name="$BanbanLabel" text="Website, Network, Marketing" inherit="LabelTemplate">
+			<Anchor relativeTo="$VjeuxLabel" />
+		</FontString>
+		<FontString name="$BanbanText" text="Alban 'Banban' Perillat-Merceroz" inherit="TextTemplate">
+			<Anchor relativeTo="$BanbanLabel" />
+		</FontString>
+		
+		<FontString name="$FelixLabel" text="Game environment, Data organisation" inherit="LabelTemplate">
+			<Anchor relativeTo="$BanbanLabel" />
+		</FontString>
+		<FontString name="$FelixText" text="Felix 'Flx' Abecassis" inherit="TextTemplate">
+			<Anchor relativeTo="$FelixLabel" />
+		</FontString>
+		
+
+		<!-- Website Translation -->
+		<FontString name="$Translation" text="Website Translation" inherit="SubTitleTemplate1">
+			<Anchor relativeTo="$FelixLabel" />
+		</FontString>
+		
+		<FontString name="$MattLabel" text="English Proof-Reading" inherit="LabelTemplate1">
+			<Anchor relativeTo="$Translation"/>
+		</FontString>
+		<FontString name="$MattText" text="Matt Lamb" inherit="TextTemplate">
+			<Anchor relativeTo="$MattLabel" />
+		</FontString>
+		
+		<FontString name="$PriscLabel" text="German Translation" inherit="LabelTemplate">
+			<Anchor relativeTo="$MattLabel" />
+		</FontString>
+		<FontString name="$PriscText" text="Priscilla Brillaud" inherit="TextTemplate">
+			<Anchor relativeTo="$PriscLabel" />
+		</FontString>
+		
+		<FontString name="$ElodieLabel" text="Spanish Translation" inherit="LabelTemplate">
+			<Anchor relativeTo="$PriscLabel" />
+		</FontString>
+		<FontString name="$ElodieText" text="Elodie Chalmette" inherit="TextTemplate">
+			<Anchor relativeTo="$ElodieLabel" />
+		</FontString>
+		
+		<!-- Artwork -->
+		<FontString name="$Artwork" text="Artworks" inherit="SubTitleTemplate1">
+			<Anchor relativeTo="$ElodieLabel" />
+		</FontString>
+		
+		<FontString name="$UnwLabel" text="Panda Interface" inherit="LabelTemplate1">
+			<Anchor relativeTo="$Artwork"/>
+		</FontString>
+		<FontString name="$UnwText" text="Unwirklich" inherit="TextTemplate">
+			<Anchor relativeTo="$UnwLabel" />
+		</FontString>
+		
+		<FontString name="$CrazyLabel" text="Various Icons" inherit="LabelTemplate">
+			<Anchor relativeTo="$UnwLabel" />
+		</FontString>
+		<FontString name="$CrazyText" text="Crazyrussian" inherit="TextTemplate">
+			<Anchor relativeTo="$CrazyLabel" />
+		</FontString>
+		
+		<FontString name="$ShalkeLabel" text="Menu Background" inherit="LabelTemplate">
+			<Anchor relativeTo="$CrazyLabel" />
+		</FontString>
+		<FontString name="$ShalkeText" text="Romain Desanti" inherit="TextTemplate">
+			<Anchor relativeTo="$ShalkeLabel" />
+		</FontString>
+
+		<!-- Models -->
+		<FontString name="$Model" text="Models" inherit="SubTitleTemplate1">
+			<Anchor relativeTo="$ShalkeLabel" />
+		</FontString>
+		
+		<FontString name="$CallLabel" text="Treant Buildings" inherit="LabelTemplate1">
+			<Anchor relativeTo="$Model" />
+		</FontString>
+		<FontString name="$CallText" text="Callaham" inherit="TextTemplate">
+			<Anchor relativeTo="$CallLabel" />
+		</FontString>
+		
+		<FontString name="$ReviLabel" text="Treant Units" inherit="LabelTemplate">
+			<Anchor relativeTo="$CallLabel" />
+		</FontString>
+		<FontString name="$ReviText" text="Revigeorge1617, Horn and Darkholme" inherit="TextTemplate">
+			<Anchor relativeTo="$ReviLabel" />
+		</FontString>
+		
+		<FontString name="$MephLabel" text="Rat Buildings" inherit="LabelTemplate">
+			<Anchor relativeTo="$ReviLabel" />
+		</FontString>
+		<FontString name="$MephText" text="Mephestrial" inherit="TextTemplate">
+			<Anchor relativeTo="$MephLabel" />
+		</FontString>
+		
+		<FontString name="$CavmanLabel" text="Rat Units" inherit="LabelTemplate">
+			<Anchor relativeTo="$MephLabel" />
+		</FontString>
+		<FontString name="$CavmanText" text="Cavman" inherit="TextTemplate">
+			<Anchor relativeTo="$CavmanLabel" />
+		</FontString>
+
+		<!-- Sounds -->
+		<FontString name="$Sound" text="Soundtrack" inherit="SubTitleTemplate1">
+			<Anchor relativeTo="$CavmanLabel" />
+		</FontString>
+		
+		<FontString name="$NovelLabel" text="Trailer Soundtrack" inherit="LabelTemplate1">
+			<Anchor relativeTo="$Sound" />
+		</FontString>
+		<FontString name="$NovelText" text="Novels" inherit="TextTemplate">
+			<Anchor relativeTo="$NovelLabel" />
+		</FontString>
+		
+		<FontString name="$XCyrillLabel" text="Menu Sountrack" inherit="LabelTemplate">
+			<Anchor relativeTo="$NovelLabel" />
+		</FontString>
+		<FontString name="$XCyrillText" text="Cyril 'Xcyril' Humbert" inherit="TextTemplate">
+			<Anchor relativeTo="$XCyrillLabel" />
+		</FontString>
+		
+		<FontString name="$FranLabel" text="Game Soundtrack" inherit="LabelTemplate">
+			<Anchor relativeTo="$XCyrillLabel" />
+		</FontString>
+		<FontString name="$FranText" text="Francesco Lettera" inherit="TextTemplate">
+			<Anchor relativeTo="$FranLabel" />
+		</FontString>
+		
+		<!-- Thanks -->
+		<FontString name="$Thanks" text="Thanks" inherit="SubTitleTemplate1">
+			<Anchor relativeTo="$FranLabel" />
+		</FontString>
+		
+		<FontString name="$BlizzLabel" text="Inspiration Source" inherit="LabelTemplate1">
+			<Anchor relativeTo="$Thanks" />
+		</FontString>
+		<FontString name="$BlizzText" text="Blizzard Entertainment" inherit="TextTemplate">
+			<Anchor relativeTo="$BlizzLabel" />
+		</FontString>
+		
+		<FontString name="$JanLabel" text="Image Loader" inherit="LabelTemplate">
+			<Anchor relativeTo="$BlizzLabel" />
+		</FontString>
+		<FontString name="$JanText" text="Jan 'Sulaco' Horn" inherit="TextTemplate">
+			<Anchor relativeTo="$JanLabel" />
+		</FontString>
+		
+		<FontString name="$ProfetLabel" text="Warcraft Guru" inherit="LabelTemplate">
+			<Anchor relativeTo="$JanLabel" />
+		</FontString>
+		<FontString name="$ProfetText" text="Bruce 'Profet' Suire-Corona" inherit="TextTemplate">
+			<Anchor relativeTo="$ProfetLabel" />
+		</FontString>
+		
+		
+		
+
+	</Frame>
+</Ui>

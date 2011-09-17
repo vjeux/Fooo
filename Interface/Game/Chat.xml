@@ -1,0 +1,118 @@
+<Ui>
+	<Frame name="ChatLineTemplate" virtual="true" width="1000" height="25">
+		<FontString name="$parentText" text="This is a line of text">
+			<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" x="30" y="-370" />
+		</FontString>
+	</Frame>
+	
+	<Frame name="Chat" EnableKeyboard="true">
+		<Frame name="ChatLines" width="1000" height="200" parent="Interface">
+			<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" />
+			
+			<Frame name="ChatLine1" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" />
+			</Frame>
+			<Frame name="ChatLine2" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine1" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine3" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine2" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine4" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine3" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine5" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine4" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine6" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine5" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine7" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine6" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine8" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine7" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine9" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine8" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine10" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine9" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine11" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine10" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine12" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine11" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine13" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine12" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine14" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine13" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine15" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine14" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine16" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine15" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine17" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine16" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine18" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine17" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine19" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine18" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine20" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine19" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine21" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine20" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine22" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine21" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine23" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine22" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine24" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine23" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine25" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine24" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine26" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine25" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine27" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine26" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine28" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine27" relativePoint="TOPLEFT" />
+			</Frame>
+			<Frame name="ChatLine29" inherit="ChatLineTemplate">
+				<Anchor point="BOTTOMLEFT" relativeTo="ChatLine28" relativePoint="TOPLEFT" />
+			</Frame>
+		</Frame>
+
+		<Frame name="ChatInput" width="750" height="60" hidden="true" parent="Interface">
+			<Texture name="ChatInputTexture" path="Textures/Interface/ChatBar.tga" />
+			<Anchor point="BOTTOM" relativePoint="BOTTOM" y="-290" />
+			<FontString name="ChatInputText">
+				<Anchor point="LEFT" relativeTo="ChatInput" relativePoint="LEFT" x="24" y="-2" />
+			</FontString>
+		</Frame>
+
+		<Scripts>
+			<OnLoad>
+				ChatInit();
+			</OnLoad>
+			<OnKeyDown>
+				ChatOnKeyDown(arg1);
+			</OnKeyDown>
+		</Scripts>
+	</Frame>
+</Ui>

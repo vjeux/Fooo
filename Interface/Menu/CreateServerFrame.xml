@@ -1,0 +1,41 @@
+<Ui>
+	<Frame name="CreateServerFrame" hidden="true"> 
+		<Anchor relativeTo="MenuFrame" />
+		<FontString name="ServerNameLabel" text="Server name">
+			<Anchor point="BOTTOM" relativeTo="ServerName" relativePoint="TOP" y="-10" />
+		</FontString>
+		<Frame name="ServerName" inherit="TextBoxTemplate" width="300" height="50">
+			<Anchor point="TOPLEFT" relativeTo="MenuFrame" relativePoint="TOPLEFT" x="200" y="100" />
+		</Frame>
+		<FontString name="NickameServerLabel" text="Nickname">
+			<Anchor point="BOTTOM" relativeTo="NicknameServer" relativePoint="TOP" y="-10" />
+		</FontString>
+		<Frame name="NicknameServer" inherit="TextBoxTemplate" width="300" height="50">
+			<Anchor point="TOP" relativeTo="ServerName" relativePoint="BOTTOM" y="50" />
+		</Frame>
+		<FontString name="MapListLabel" text="Select a map">
+			<Anchor point="BOTTOM" relativeTo="MapList" relativePoint="TOP" y="-10" />
+		</FontString>
+		<Frame name="MapList" inherit="ListBoxTemplate" width="500" height="600">
+			<Anchor point="TOP" relativeTo="NicknameServer" relativePoint="BOTTOM" y="50" />
+			<Scripts>
+				<OnLoad>
+					MapList_OnLoad();
+				</OnLoad>
+			</Scripts>
+		</Frame>
+		<Frame name="CreateServer" inherit="MenuButtonTemplate">
+			<Anchor point="BOTTOMRIGHT" relativeTo="CreateServerFrame" relativePoint="BOTTOMRIGHT" x="-560" y="-170" />
+			<Scripts>
+				<OnLoad>
+					CreateServer_OnLoad();
+				</OnLoad>
+			</Scripts>
+		</Frame>
+		<Scripts>
+			<OnUpdate>
+				CreateServerFrame_OnUpdate();
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+</Ui>

@@ -1,0 +1,66 @@
+<Ui>
+	<Frame name="ServerListFrame" hidden="true">
+		<Anchor relativeTo="MenuFrame" />
+		<FontString name="ServerIPLabel" text="Nickname:">
+			<Anchor x="100" y="100" />
+		</FontString>
+		<Frame name="Nickname" inherit="TextBoxTemplate" width="300" height="50">
+			<Anchor x="100" y="130" />
+		</Frame>
+		<FontString name="ServerIPLabel" text="Server IP:">
+			<Anchor x="100" y="200" />
+		</FontString>
+		<Frame name="ServerIP" inherit="TextBoxTemplate" width="300" height="50">
+			<Anchor x="100" y="230" />
+		</Frame>
+		<Frame name="ServerListConnectTop" inherit="MenuButtonTemplate">
+			<Anchor point="LEFT" relativeTo="ServerIP" relativePoint="RIGHT" x="10" />
+			<Scripts>
+				<OnLoad>
+					ServerListConnectTop_OnLoad();
+				</OnLoad>
+			</Scripts>
+		</Frame>
+		<Frame name="ServerList" inherit="ListBoxTemplate" width="890" height="500">
+			<Anchor point="TOPLEFT" relativeTo="ServerIP" relativePoint="BOTTOMLEFT" y="80" />
+			<Scripts>
+				<OnLoad>
+					ServerList_OnLoad();
+				</OnLoad>
+			</Scripts>
+		</Frame>
+		<Frame>
+			<FontString name="ServerListLabelName" text="Server name">
+				<Anchor point="BOTTOM" relativeTo="ServerList" relativePoint="TOP" y="-10" x="-365" />
+			</FontString>
+			<FontString name="ServerListLabelIP" text="IP">
+				<Anchor point="BOTTOM" relativeTo="ServerList" relativePoint="TOP" y="-10" x="-80" />
+			</FontString>
+			<FontString name="ServerListLabelCount" text="Player(s)">
+				<Anchor point="BOTTOM" relativeTo="ServerList" relativePoint="TOP" y="-10" x="70" />
+			</FontString>
+			<FontString name="ServerListLabelMap" text="Map">
+				<Anchor point="BOTTOM" relativeTo="ServerList" relativePoint="TOP" y="-10" x="350" />
+			</FontString>
+		</Frame>
+		<Frame name="ServerListRefresh" inherit="MenuButtonTemplate">
+			<Anchor point="TOPLEFT" relativeTo="ServerList" relativePoint="BOTTOMLEFT" y="10" />
+			<Scripts>
+				<OnLoad>
+					ServerListRefresh_OnLoad();
+				</OnLoad>
+				<OnUpdate>
+					ServerListRefresh_OnUpdate();
+				</OnUpdate>
+			</Scripts>
+		</Frame>
+		<Frame name="ServerListConnectBottom" inherit="MenuButtonTemplate">
+			<Anchor point="TOPRIGHT" relativeTo="ServerList" relativePoint="BOTTOMRIGHT" y="10" />
+			<Scripts>
+				<OnLoad>
+					ServerListConnectBottom_OnLoad();
+				</OnLoad>
+			</Scripts>
+		</Frame>
+	</Frame>
+</Ui>

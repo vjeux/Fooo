@@ -1,0 +1,659 @@
+<Ui>
+	<Frame name="Warning" width="500" height="20">
+		<Anchor point="CENTER" relativePoint="CENTER" y="250"/>
+		<Scripts>
+			<OnEvent>
+				if (event == EVENT_WARNING) then
+					SetText('Message', GetWarningText());
+				end
+			</OnEvent>
+		</Scripts>
+		<FontString name="Message" text="" r="240" g="50" b="50" font="Thorndale16">
+		<Anchor relativePoint="CENTER" point="CENTER" />
+		</FontString>		
+	</Frame>
+	
+	<Frame name="CommandButtonTemplate" virtual="true" width="76" height="76" EnableMouse="true">
+		<Frame name="$parentIcon" width="76" height="76">
+			<Anchor relativePoint="CENTER" point="CENTER" />
+			<Texture name="$parentTexture"/>
+			<Texture name="$parentActive" path="Textures/Icons/Active.tga" />
+		</Frame>
+		<Scripts>
+			<OnEnter>
+				ShowToolTip(self);
+			</OnEnter>
+			<OnLeave>
+				SetVisible('ToolTip', false);
+			</OnLeave>
+			<OnMouseDown>		
+				if (arg1 == 1) and (string.find(GetPath(self..'IconTexture'), 'DIS') == nil) then -- Left Mouse
+					SetSize(self..'Icon', 70);
+				end
+			</OnMouseDown>
+			<OnMouseUp>
+				SetSize(self..'Icon', 76);
+                CommandButtonAction(self);				
+			</OnMouseUp>
+			<OnEvent>
+				if (event == EVENT_ONMOUSEUP) then
+					SetSize(self..'Icon', 76);
+				else
+					CommandButtonOnEvent(self);
+				end
+			</OnEvent>
+			<OnLoad>
+				event = EVENT_SELECTIONCHANGE;
+				CommandButtonOnEvent(self);
+			</OnLoad>
+			<OnUpdate>
+				local id = ExtractID(self);
+				local UnitID = GetUnitSelectedID(Index);
+				if (id >= 9) and (GetAbilityCount(UnitID) >= id-8) then
+					if GetAbilityCost(UnitID, id - 9) > GetMP(UnitID) then
+						SetColor(self..'IconTexture', 50, 50, 255);
+					elseif GetIsAbilityAvailable(UnitID, id-9) then
+						SetColor(self..'IconTexture', 255, 255, 255);
+					end
+				end
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="CooldownTemplate" virtual="true" width="76" height="76" Background="Textures/Interface/Dialog_Background.tga" hidden="true">
+		<FontString name="$parentText" text="" font="Thorndale32" r="255" g="255" b="0">
+			<Anchor point="CENTER" relativePoint="CENTER" />
+		</FontString>
+		<Scripts>
+			<OnUpdate>
+				local UnitID = GetUnitSelectedID(0);
+				local id = ExtractID(self);
+				if (GetAbilityCount(UnitID) >= id-8) and (not GetIsAbilityAvailable(UnitID, id-9)) then
+					local remaining = GetCooldownRemainingTime(UnitID, id-9);
+					if remaining == 0 then
+						SetVisible(self, false);
+					else
+						SetText(self..'Text', remaining);
+					end
+				else
+					SetVisible(self, false);
+				end
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="CommandButtons">
+		<Anchor parent="Interface" relativePoint="BOTTOMRIGHT" x="-365" y="-262" />
+		<Frame name="CommandButton1" inherit="CommandButtonTemplate">
+		</Frame>
+		<Frame name="CommandButton2" inherit="CommandButtonTemplate">
+			<Anchor relativeTo="CommandButton1" relativePoint="TOPRIGHT" x="12" />
+		</Frame>
+		<Frame name="CommandButton3" inherit="CommandButtonTemplate">
+			<Anchor relativeTo="CommandButton2" relativePoint="TOPRIGHT" x="12" />
+		</Frame>
+		<Frame name="CommandButton4" inherit="CommandButtonTemplate">
+			<Anchor relativeTo="CommandButton3" relativePoint="TOPRIGHT" x="12" />
+		</Frame>
+		<Frame name="CommandButton5" inherit="CommandButtonTemplate">
+			<Anchor relativeTo="CommandButton1" relativePoint="BOTTOMLEFT" y="12" />
+		</Frame>
+		<Frame name="CommandButton6" inherit="CommandButtonTemplate">
+			<Anchor relativeTo="CommandButton5" relativePoint="TOPRIGHT" x="12" />
+		</Frame>
+		<Frame name="CommandButton7" inherit="CommandButtonTemplate">
+			<Anchor relativeTo="CommandButton6" relativePoint="TOPRIGHT" x="12" />
+		</Frame>
+		<Frame name="CommandButton8" inherit="CommandButtonTemplate">
+			<Anchor relativeTo="CommandButton7" relativePoint="TOPRIGHT" x="12" />
+		</Frame>
+		<Frame name="CommandButton9" inherit="CommandButtonTemplate">
+			<Anchor relativeTo="CommandButton5" relativePoint="BOTTOMLEFT" y="12" />
+		</Frame>
+		<Frame name="Cooldown9" inherit="CooldownTemplate">
+			<Anchor relativeTo="CommandButton9"/>
+		</Frame>
+		<Frame name="CommandButton10" inherit="CommandButtonTemplate">
+			<Anchor relativeTo="CommandButton9" relativePoint="TOPRIGHT" x="12" />						
+		</Frame>
+		<Frame name="Cooldown10" inherit="CooldownTemplate">
+			<Anchor relativeTo="CommandButton10"/>
+		</Frame>
+		<Frame name="CommandButton11" inherit="CommandButtonTemplate">
+			<Anchor relativeTo="CommandButton10" relativePoint="TOPRIGHT" x="12" />
+		</Frame>
+		<Frame name="Cooldown11" inherit="CooldownTemplate">
+			<Anchor relativeTo="CommandButton11"/>
+		</Frame>
+		<Frame name="CommandButton12" inherit="CommandButtonTemplate">
+			<Anchor relativeTo="CommandButton11" relativePoint="TOPRIGHT" x="12" />
+		</Frame>
+		<Frame name="Cooldown12" inherit="CooldownTemplate">
+			<Anchor relativeTo="CommandButton12"/>
+		</Frame>
+
+		<Scripts>
+			<OnUpdate>
+				local Select = GetNbUnitSelect();
+				if Select == 1 then
+					SetVisible('HPMP', true);
+					ShowHPMP(0);
+					ShowDescription(0);					
+						for i = 1, 18, 1 do 
+							SetVisible('SelectionButton'..i, false);
+							SetVisible('SelectionButton'..i..'Active', false);
+							Name = nil;
+						end
+				else
+					SetVisible('UnitDescription', false);
+					if Select ~= 0 then
+						SetVisible('HPMP', true);
+						ShowHPMP(0);
+						ShowSelectedGroup(Select);
+					else
+						SetVisible('HPMP', false);
+						Index = 0;
+						Name = nil;
+					end
+				end
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+	
+	
+	<Frame name="SelectionButtonTemplate" virtual="true" width="64" height="76" EnableMouse="true">
+		<Texture name="$parentActive" path="Textures/Icons/Background.tga"/>
+		<Texture name="$parentTexture" path="Textures/Icons/Beaver.tga" width="52" height="52">
+			<Anchor point="TOP" relativePoint="TOP" y="6" />
+		</Texture>
+		<Frame name="$parentLife" EnableKeyboard="true" height="8" width="52">
+			<Anchor point="TOP" relativePoint="TOP" y="60"/>
+			<Texture name="$parentBar" path="Textures/Interface/lifebar.tga" r="0" g="255" b="0" />
+		</Frame>
+		<Scripts>
+			<OnLoad>
+				SetVisible(self, false);
+			</OnLoad>
+			<OnMouseDown>
+				OnSelectionClick(self);
+			</OnMouseDown>
+			<OnEvent>
+				if event == EVENT_SELECTIONCHANGE then
+					ShowSelectedGroup(GetNbUnitSelect());
+				end
+			</OnEvent>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="SelectionButtons" width="370" height="200" EnableKeyboard="true">
+		<Anchor relativePoint="BOTTOM" x="-170" y="-215" />
+		<Frame name="SelectionButton1" inherit="SelectionButtonTemplate" />
+		<Frame name="SelectionButton2" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton1" relativePoint="TOPRIGHT" x="-6" />
+		</Frame>
+		<Frame name="SelectionButton3" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton2" relativePoint="TOPRIGHT" x="-6" />
+		</Frame>
+		<Frame name="SelectionButton4" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton3" relativePoint="TOPRIGHT" x="-6" />
+		</Frame>
+		<Frame name="SelectionButton5" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton4" relativePoint="TOPRIGHT" x="-6" />
+		</Frame>
+		<Frame name="SelectionButton6" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton5" relativePoint="TOPRIGHT" x="-6" />
+		</Frame>
+
+		<Frame name="SelectionButton7" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton1" relativePoint="BOTTOMLEFT" y="-8" />
+		</Frame>
+		<Frame name="SelectionButton8" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton7" relativePoint="TOPRIGHT" x="-6" />
+		</Frame>
+		<Frame name="SelectionButton9" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton8" relativePoint="TOPRIGHT" x="-6" />
+		</Frame>
+		<Frame name="SelectionButton10" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton9" relativePoint="TOPRIGHT" x="-6" />
+		</Frame>
+		<Frame name="SelectionButton11" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton10" relativePoint="TOPRIGHT" x="-6" />
+		</Frame>
+		<Frame name="SelectionButton12" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton11" relativePoint="TOPRIGHT" x="-6" />
+		</Frame>
+
+		<Frame name="SelectionButton13" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton7" relativePoint="BOTTOMLEFT" y="-8" />
+		</Frame>
+		<Frame name="SelectionButton14" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton13" relativePoint="TOPRIGHT" x="-6" />
+		</Frame>
+		<Frame name="SelectionButton15" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton14" relativePoint="TOPRIGHT" x="-6" />
+		</Frame>
+		<Frame name="SelectionButton16" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton15" relativePoint="TOPRIGHT" x="-6" />
+		</Frame>
+		<Frame name="SelectionButton17" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton16" relativePoint="TOPRIGHT" x="-6" />
+		</Frame>
+		<Frame name="SelectionButton18" inherit="SelectionButtonTemplate">
+			<Anchor relativeTo="SelectionButton17" relativePoint="TOPRIGHT" x="-6" />
+		</Frame>
+		<OnKeyDown>
+			if arg1 == -9 then
+				OnTabPress(0);				
+			end
+		</OnKeyDown>
+	</Frame>
+	
+	
+	<Frame name="UnitDescriptionIcon" virtual="true" width="48" height="48">
+		<Texture name="$parentTexture" path="Textures/Icons/BTNAttack.tga">
+			<Anchor point="TOP" relativePoint="TOP" y="6" />
+		</Texture>
+	</Frame>
+	
+	<Frame name="UnitEffectIcon" virtual="true" width="20" height="20">
+		<Texture name="$parentTexture" path="Textures/Icons/Icon.tga">
+			<Anchor point="TOP" relativePoint="TOP" y="6" />
+		</Texture>
+		<Scripts>
+			<OnLoad>
+				SetVisible(self, false);
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="BuildingQueueTemplate" virtual="true" width="52" height="52" EnableMouse="true">
+		<Texture name="$parentTexture" path="Textures/Icons/Beaver.tga" width="52" height="52">
+			<Anchor point="TOP" relativePoint="TOP" />
+		</Texture>
+		<Scripts>
+			<OnLoad>
+				SetVisible(self, false);
+			</OnLoad>
+			<OnMouseDown>
+				local id = ExtractID(self);
+				local UnitID = GetUnitSelectedID(0);
+				DeleteFromBuildingQueue(UnitID, id);
+			</OnMouseDown>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="TrainingListTemplate" virtual="true" width="55" height="55" EnableMouse="true">
+		<Texture name="$parentTexture" path="Textures/Icons/Beaver.tga" width="55" height="55">
+			<Anchor point="TOP" relativePoint="TOP" />
+		</Texture>
+		<Scripts>
+			<OnLoad>
+				SetVisible(self, false);
+			</OnLoad>
+			<OnMouseDown>
+				local id = ExtractID(self);
+				local UnitID = GetUnitSelectedID(0);
+				DeleteFromTrainingList(UnitID, id);
+			</OnMouseDown>
+		</Scripts>
+	</Frame>
+	
+	
+	<Frame name="UnitDescription" width="360" height="220" >
+		<Anchor point="BOTTOM" relativePoint="BOTTOM" x="0" y="0" />
+		<Frame name="BuildingQueueButtons" width="370" height="200" EnableKeyboard="true" hidden="true">
+			<Anchor relativeTo="UnitDescription" x="10" y="50"/>
+			<FontString name="Progression" text="Progression" r="210" g="200" b="0">
+				<Anchor relativeTo="BuildingPercent" point="BOTTOMLEFT" relativePoint="TOPLEFT" y="-5" />
+			</FontString>
+			<Frame name="BuildingPercent" height="8" width="160">
+				<Anchor relativeTo="BuildingQueueButton1" point="LEFT" relativePoint="RIGHT" x="35"/>
+				<Texture name="BuildingPercentBackground" path="Textures/Interface/Dialog_Background.TGA"/>
+				<Texture name="BuildingPercentBar" path="Textures/Interface/lifebar.tga" r="210" g="200" b="0" />
+				<OnUpdate>
+					local UnitID = GetUnitSelectedID(0);
+					local ratio = 0;
+					if GetBuildingQueueLength(UnitID) == 0 then
+						ratio = GetBuildingPercent(UnitID);
+					else					
+						ratio = GetProgressionPercent(UnitID)/100;
+					end
+					SetWidth('BuildingPercentBar', ratio * 160);
+				</OnUpdate>
+			</Frame>
+			<Frame name="BuildingQueueButton1" width="78" height="78" EnableMouse="true">					
+				<Texture name="BuildingQueueButton1Texture" path="Textures/Icons/Beaver.tga" width="65" height="65">
+					<Anchor point="TOP" relativePoint="TOP"/>
+				</Texture>
+				<Scripts>
+				<OnMouseDown>
+					local id = ExtractID(self);
+					local UnitID = GetUnitSelectedID(0);
+					if GetBuildingQueueLength(UnitID) ~= 0 then
+						DeleteFromBuildingQueue(UnitID, id);
+					end
+				</OnMouseDown>
+				</Scripts>
+			</Frame>
+			<Frame name="BuildingQueueButton2" inherit="BuildingQueueTemplate">
+				<Anchor relativeTo="BuildingQueueButton1" point="TOPLEFT" relativePoint="BOTTOMLEFT"/>
+			</Frame>
+			<Frame name="BuildingQueueButton3" inherit="BuildingQueueTemplate">
+				<Anchor relativeTo="BuildingQueueButton2" point="LEFT" relativePoint="RIGHT" x="15"/>
+			</Frame>
+			<Frame name="BuildingQueueButton4" inherit="BuildingQueueTemplate">
+				<Anchor relativeTo="BuildingQueueButton3" point="LEFT" relativePoint="RIGHT" x="15"/>
+			</Frame>
+			<Frame name="BuildingQueueButton5" inherit="BuildingQueueTemplate">
+				<Anchor relativeTo="BuildingQueueButton4" point="LEFT" relativePoint="RIGHT" x="15"/>
+			</Frame>
+			<Frame name="BuildingQueueButton6" inherit="BuildingQueueTemplate">
+				<Anchor relativeTo="BuildingQueueButton5" point="LEFT" relativePoint="RIGHT" x="15"/>
+			</Frame>
+		</Frame>
+		<Frame name="TrainingList" width="370" height="200" EnableKeyboard="true" hidden="false">
+			<Anchor relativeTo="UnitDescription" point="TOP" relativePoint="TOP" x="80" y="65"/>
+			<Frame name="TrainingListUnit1" inherit="TrainingListTemplate">
+				<Anchor point="TOPLEFT" relativePoint="TOPLEFT"/>
+			</Frame>
+			<Frame name="TrainingListUnit2" inherit="TrainingListTemplate">
+				<Anchor relativeTo="TrainingListUnit1" point="LEFT" relativePoint="RIGHT" x="20"/>
+			</Frame>
+			<Frame name="TrainingListUnit3" inherit="TrainingListTemplate">
+				<Anchor relativeTo="TrainingListUnit2" point="LEFT" relativePoint="RIGHT" x="20"/>
+			</Frame>
+			<Frame name="TrainingListUnit4" inherit="TrainingListTemplate">
+				<Anchor relativeTo="TrainingListUnit1" point="TOPLEFT" relativePoint="BOTTOMLEFT" y="10"/>
+			</Frame>
+			<Frame name="TrainingListUnit5" inherit="TrainingListTemplate">
+				<Anchor relativeTo="TrainingListUnit4" point="LEFT" relativePoint="RIGHT" x="20"/>
+			</Frame>
+			<Frame name="TrainingListUnit6" inherit="TrainingListTemplate">
+				<Anchor relativeTo="TrainingListUnit5" point="LEFT" relativePoint="RIGHT" x="20"/>
+			</Frame>
+			
+		</Frame>						
+		<Frame name="DamageDefense" width="200" height="150">
+			<Anchor point="LEFT" relativePoint="LEFT" x="0" y="0" />
+			<Frame name="UnitDescriptionIcon1" inherit="UnitDescriptionIcon">
+				<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="12" y="25" />
+			</Frame>
+			<Frame name="UnitDescriptionIcon2" inherit="UnitDescriptionIcon">
+				<Anchor relativeTo="UnitDescriptionIcon1" relativePoint="TOPLEFT" x="0" y="60" />
+				<Scripts>
+					<OnLoad>
+						SetPath(self..'Texture', 'Textures/Icons/BTNDefense.tga');
+					</OnLoad>
+				</Scripts>
+			</Frame>
+			<FontString name="DamageText" text="Damage:" r="220" g="220" b="20">
+				<Anchor relativeTo="UnitDescriptionIcon1" point="TOPLEFT" relativePoint="TOPRIGHT" x="5" y="5"/>
+			</FontString>
+			<FontString name="DamageValue" text="0">
+				<Anchor relativeTo="DamageText" point="TOP" relativePoint="TOP" y="22" />
+			</FontString>
+			<FontString name="DamageBonus" text="+0" r="0" g="255" b="0">
+				<Anchor relativeTo="DamageValue" point="LEFT" relativePoint="RIGHT" x="-2" />
+			</FontString>
+			<FontString name="DefenseText" text="Defense:" r="220" g="220" b="20">
+				<Anchor relativeTo="UnitDescriptionIcon2" point="TOPLEFT" relativePoint="TOPRIGHT" x="5" y="5"/>
+			</FontString>
+			<FontString name="DefenseValue" text="0">
+				<Anchor relativeTo="DefenseText" point="TOP" relativePoint="TOP" y="22" />
+			</FontString>
+			<FontString name="DefenseBonus" text="+0" r="0" g="255" b="0">
+				<Anchor relativeTo="DefenseValue" point="LEFT" relativePoint="RIGHT" x="-2" />
+			</FontString>
+		</Frame>
+		<FontString name="UnitName" text="Zergling" font="Thorndale20">
+			<Anchor point="TOP" relativePoint="TOP" />
+		</FontString>
+		<Frame>
+			<FontString name="PlayerName" text="">
+				<Anchor relativeTo="UnitName" point="TOP" relativePoint="TOP" y="30" />
+			</FontString>
+			<Scripts>
+				<OnEvent>
+					if event == EVENT_SELECTIONCHANGE then
+						if GetUnitRace(GetUnitSelectedID(0)) == 0 then
+							SetText('PlayerName', 'Treant');
+						else
+							SetText('PlayerName', 'Rat');
+						end;
+					end;
+				</OnEvent>
+			</Scripts>
+		</Frame>
+		<FontString name="Status" text="Status:">
+			<Anchor point="TOP" relativePoint="TOP" x="-100" y="185" />
+		</FontString>
+		<Frame name="UnitEffects" width="120" height="30">
+			<Scripts>
+				<OnEvent>
+					if event == EVENT_ONEFFECT then
+						EffectChange(self);
+					end
+					if event == EVENT_BUILDINGQUEUE then
+						ShowDescription(0);
+					end
+				</OnEvent>
+			</Scripts>
+			<Anchor point="BOTTOM" relativePoint="BOTTOM" x="-10" y="-8" />
+			<Frame name="UnitEffectIcon1" inherit="UnitEffectIcon">
+			<Frame name="UnitEffectIcon2" inherit="UnitEffectIcon">
+				<Anchor relativeTo="UnitEffectIcon1" relativePoint="TOPLEFT" x="20" />
+			</Frame>
+			<Frame name="UnitEffectIcon3" inherit="UnitEffectIcon">
+				<Anchor relativeTo="UnitEffectIcon2" relativePoint="TOPLEFT" x="20" />
+			</Frame>
+			<Frame name="UnitEffectIcon4" inherit="UnitEffectIcon">
+				<Anchor relativeTo="UnitEffectIcon3" relativePoint="TOPLEFT" x="20" />
+			</Frame>
+			<Frame name="UnitEffectIcon5" inherit="UnitEffectIcon">
+				<Anchor relativeTo="UnitEffectIcon4" relativePoint="TOPLEFT" x="20" />
+			</Frame>
+			<Frame name="UnitEffectIcon6" inherit="UnitEffectIcon">
+				<Anchor relativeTo="UnitEffectIcon5" relativePoint="TOPLEFT" x="20" />
+			</Frame>
+		</Frame>		
+		</Frame>		
+	</Frame>
+	
+	<Frame name="HPMP" width="145" height="68">
+		<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" x="440"/>
+		<FontString name="HP" text="500 / 1000" r="0" g="255" b="0" font="Thorndale16">
+			<Anchor point="CENTER" relativePoint="TOP"  x="-3" y="20" />
+		</FontString>		
+		<FontString name="MP" text="200 / 1000" r="0" g="90" b="255" font="Thorndale16">
+			<Anchor relativeTo="HP" point="TOP" relativePoint="BOTTOM" y="10" />
+		</FontString>
+	</Frame>
+	
+	<Frame name="IconCostTemplate" virtual="true" width="18" height="18">
+		<Texture name="$parentTexture" path="Textures/Icons/Mana.tga">
+			<Anchor point="TOP" relativePoint="TOP" y="6" />
+		</Texture>
+	</Frame>
+	
+	<Frame name="ToolTip" width="360" Border="Textures/Interface/Dialog_Borders.tga" BorderSize="16" Background="Textures/Interface/Dialog_Background.tga">
+		<Anchor point="RIGHT" relativePoint="RIGHT"/>
+		<Scripts>
+			<OnLoad>
+				SetVisible('ToolTip', false);
+			</OnLoad>
+		</Scripts>
+		<FontString name="Name" text="" font="Thorndale16" r="220" g="220" b="20">
+			<Anchor x="15" y="10" />
+		</FontString>
+		<Frame name="ManaCost" width="120" height="20">
+			<Anchor point="LEFT" relativePoint="LEFT" x="10" y="-25"/>
+			<FontString name="Cost" text="Mana" r="0" g="90" b="255">
+				<Anchor relativeTo="Name" point="TOPLEFT" relativePoint="BOTTOMLEFT" />
+			</FontString>
+			<Frame name="ManaIcon" inherit="IconCostTemplate">
+				<Anchor relativeTo="Cost" point="BOTTOMLEFT" relativePoint="RIGHT" x="5" y="3"/>
+			</Frame>
+		</Frame>
+		<Frame name="ResCost" width="120" height="20">
+			<Anchor point="LEFT" relativePoint="LEFT" x="10" y="-25"/>
+			<Frame name="Res1">
+				<Frame name="Res1Icon" width="18" height="18">
+					<Anchor relativeTo="Name" point="TOPLEFT" relativePoint="BOTTOMLEFT" y="2"/>
+					<Texture name="Res1IconTexture" path="Textures/Icons/Gold.tga">
+						<Anchor point="TOP" relativePoint="TOP" />
+					</Texture>
+				</Frame>
+				<FontString name="Res1Cost" text="Ress1" r="200" g="200" b="0">
+					<Anchor relativeTo="Res1Icon" point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT" x="5"/>
+				</FontString>
+			</Frame>
+			<Frame name="Res2">
+				<Frame name="Res2Icon" width="18" height="18">
+					<Anchor relativeTo="Res1Cost" point="LEFT" relativePoint="RIGHT" x="20" y="2"/>
+					<Texture name="Res2IconTexture" path="Textures/Icons/Wood.tga">
+						<Anchor point="TOP" relativePoint="TOP"/>
+					</Texture>
+				</Frame>
+				<FontString name="Res2Cost" text="Res2" r="160" g="50" b="0">
+					<Anchor relativeTo="Res2Icon" point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT" x="5"/>
+				</FontString>
+			</Frame>
+		</Frame>		
+		<FontString name="Shortcut" text="(S)" r="0" g="220" b="0">
+			<Anchor relativePoint="RIGHT" point="LEFT" relativeTo="Name" x="10" />
+		</FontString>
+		<FontString name="Description1" text="">
+			<Anchor relativeTo="Name" y="25" />
+		</FontString>
+		<FontString name="Description2" text="">
+			<Anchor relativeTo="Description1" y="18" />
+		</FontString>
+		<FontString name="Description3" text="">
+			<Anchor relativeTo="Description2" y="18" />
+		</FontString>
+		<FontString name="Description4" text="">
+			<Anchor relativeTo="Description3" y="18" />
+		</FontString>
+		<FontString name="Description5" text="">
+			<Anchor relativeTo="Description4" y="18" />
+		</FontString>
+		<FontString name="Description6" text="">
+			<Anchor relativeTo="Description5" y="18" />
+		</FontString>
+	</Frame>
+	
+	<Frame name="GameButtonTemplate" virtual="true" width="152" height="36">
+		<Frame name="$parentButton" inherit="ButtonTemplate">
+			<Anchor point="TOP" relativePoint="TOP" />
+		</Frame>
+	</Frame>
+	<Frame name="Menu" width="700" height="40">
+		<Anchor point="TOPLEFT" relativePoint="TOPLEFT"/>
+		<Frame name="OptionsButton" inherit="GameButtonTemplate">
+			<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x ="18"/>
+			<Scripts>
+				<OnLoad>
+					SetText(self..'ButtonText', 'Options');
+				</OnLoad>
+			</Scripts>
+		</Frame>
+		<Frame name="MenuButton" inherit="GameButtonTemplate">
+			<Anchor relativeTo="OptionsButton" relativePoint="TOPLEFT" x ="167"/>
+			<Scripts>
+				<OnLoad>
+					SetText(self..'ButtonText', 'Menu');
+				</OnLoad>
+			</Scripts>
+		<Frame name="AlliesButton" inherit="GameButtonTemplate">
+			<Anchor relativeTo="MenuButton" relativePoint="TOPLEFT" x ="168"/>
+			<Scripts>
+				<OnLoad>
+					SetText(self..'ButtonText', 'Allies');
+				</OnLoad>
+			</Scripts>
+		</Frame>
+		<Frame name="LogButton" inherit="GameButtonTemplate">
+			<Anchor relativeTo="AlliesButton" relativePoint="TOPLEFT" x ="168"/>
+			<Scripts>
+				<OnLoad>
+					SetText(self..'ButtonText', 'Log');
+				</OnLoad>
+			</Scripts>
+		</Frame>
+		</Frame>
+	</Frame>
+	
+	<Frame name="ResourceIconTemplate" virtual="true" width="28" height="28" >
+		<Texture name="$parentTexture" path="Textures/Icons/Icon.tga">
+			<Anchor point="TOP" relativePoint="TOP" y="6" />
+		</Texture>
+	</Frame>
+	
+	<Frame name="ResourceFrameTemplate" virtual="true" width="150" height="36" >
+	</Frame>
+	
+	<Frame name="Resources" width="700" height="40">
+		<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT"/>
+		<Frame name="Gold" inherit="ResourceFrameTemplate">
+			<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x ="32"/>
+			<Frame name="GoldIcon" inherit="ResourceIconTemplate">
+				<Scripts>
+					<OnLoad>
+						SetPath(self..'Texture', 'Textures/Icons/Gold.tga');
+					</OnLoad>
+				</Scripts>
+			</Frame>
+			<FontString name="GoldText" text="1337" font="Thorndale16">
+				<Anchor relativeTo="GoldIcon" relativePoint="RIGHT" point="RIGHT" x ="115" y="4"/>
+			</FontString>
+			<Scripts>
+				<OnUpdate>
+					SetText('GoldText', GetRes1());
+				</OnUpdate>
+			</Scripts>
+		</Frame>
+		<Frame name="Wood" inherit="ResourceFrameTemplate">
+			<Anchor relativeTo="Gold" relativePoint="TOPLEFT" x ="175"/>
+			<Frame name="WoodIcon" inherit="ResourceIconTemplate">
+				<Scripts>
+					<OnLoad>
+						SetPath(self..'Texture', 'Textures/Icons/Wood.tga');
+					</OnLoad>
+				</Scripts>
+			</Frame>
+			<FontString name="WoodText" text="666" font="Thorndale16">
+				<Anchor relativeTo="WoodIcon" relativePoint="RIGHT" point="RIGHT" x ="105" y="4"/>
+			</FontString>
+			<Scripts>
+				<OnUpdate>
+					SetText('WoodText', GetRes2());
+				</OnUpdate>
+			</Scripts>	
+		</Frame>
+		<Frame name="Food" inherit="ResourceFrameTemplate">
+			<Anchor relativeTo="Wood" relativePoint="TOPLEFT" x ="163"/>
+			<Frame name="FoodIcon" inherit="ResourceIconTemplate">
+				<Scripts>
+					<OnLoad>
+						SetPath(self..'Texture', 'Textures/Icons/Food.tga');
+					</OnLoad>
+					<OnEvent>
+						if event == EVENT_POPCHANGE then
+							SetText('FoodText', GetPopCount());
+						end
+					</OnEvent>
+				</Scripts>
+			</Frame>
+			<FontString name="FoodText" text="0" font="Thorndale16">
+				<Anchor relativeTo="FoodIcon" relativePoint="RIGHT" point="RIGHT" x ="110" y="4"/>
+			</FontString>		
+		</Frame>
+		<Frame name="Upkeep" inherit="ResourceFrameTemplate">
+			<Anchor relativeTo="Food" relativePoint="TOPLEFT" x ="168"/>
+			<FontString name="UpkeepText" text="Fooo Mode" font="Thorndale16" r="0" g="255" b="0">
+				<Anchor relativePoint="LEFT" point="LEFT" x="25"/>
+			</FontString>	
+		</Frame>
+		
+	</Frame>
+</Ui>

@@ -1,0 +1,80 @@
+<Ui>
+	<Frame>
+		<Texture name="Wallpaper" path="Textures/Interface/Wallpaper.tga" />
+	</Frame>
+	
+	<Frame name="MenuButtonTemplate" virtual="true" width="300" height="100">
+		<Texture path="Textures/Interface/Buttons_Background.tga" />
+		<Frame name="$parentButton" inherit="ButtonTemplate" width="200" height="50">
+			<Anchor point="CENTER" relativePoint="CENTER" />
+		</Frame>
+	</Frame>
+	
+	<Frame name="RightButtons" width="384" height="1088" Border="Textures/Interface/Dialog_Borders.tga" BorderSize="64" Background="Textures/Interface/Dialog_Background.tga">
+		<Anchor point="RIGHT" relativePoint="RIGHT" x="-40"/>
+		<Frame name="OptionsButton" inherit="MenuButtonTemplate">
+			<Anchor point="CENTER" relativePoint="CENTER" y="50" />
+			<Scripts>
+				<OnLoad>
+					OptionButton_OnLoad();
+				</OnLoad>
+			</Scripts>
+		</Frame>
+		<Frame name="CreditsButton" inherit="MenuButtonTemplate">
+			<Anchor point="TOP" relativeTo="OptionsButton" relativePoint="TOP" y="100" />
+			<Scripts>
+				<OnLoad>
+					CreditButton_OnLoad();
+				</OnLoad>
+			</Scripts>
+		</Frame>
+		<Frame name="QuitButton" inherit="MenuButtonTemplate">
+			<Anchor point="TOP" relativeTo="CreditsButton" relativePoint="TOP" y="100" />
+			<Scripts>
+				<OnLoad>
+					QuitButton_OnLoad();
+				</OnLoad>
+			</Scripts>
+		</Frame>
+		<Frame name="JoinButton" inherit="MenuButtonTemplate">
+			<Anchor point="TOP" relativeTo="OptionsButton" relativePoint="TOP" y="-100" />
+			<Scripts>
+				<OnLoad>
+					JoinButton_OnLoad();
+				</OnLoad>
+			</Scripts>
+		</Frame>
+		<Frame name="CreateButton" inherit="MenuButtonTemplate">
+			<Anchor point="TOP" relativeTo="JoinButton" relativePoint="TOP" y="-100" />
+			<Scripts>
+				<OnLoad>
+					CreateButton_OnLoad();
+				</OnLoad>
+			</Scripts>
+		</Frame>
+	</Frame>
+	
+	<Frame>
+		<Texture path="Textures/Interface/BlizzardFooo.tga" width="172" height="96"> 
+			<Anchor point="BOTTOM" relativeTo="RightButtons" relativePoint="BOTTOM" y="-50"/>
+		</Texture>
+		<Texture path="Textures/Interface/Fooo.tga" width="256" height="256"> 
+			<Anchor point="TOP" relativeTo="RightButtons" relativePoint="TOP" y="50"/>
+		</Texture>
+	</Frame>
+
+	<Frame name="MenuFrame" width="1088" height="1088" Border="Textures/Interface/Dialog_Borders.tga" BorderSize="64" Background="Textures/Interface/Dialog_Background.tga" hidden="true">
+		<Anchor point="LEFT" relativePoint="LEFT" x="40"/>
+
+		<Scripts>
+			<OnUpdate>
+				Menu_OnUpdate();
+			</OnUpdate>
+			<OnEvent>
+				if event == EVENT_ONSERVERDISCONNECT then
+					serverConnectionLost = 1;
+				end
+			</OnEvent>
+		</Scripts>
+	</Frame>
+</Ui>

@@ -1,0 +1,47 @@
+<Ui>
+
+<Frame name="FloatingBarTemplate" virtual="true" height="10" width="100" hidden="true">
+	<Texture name="$parentBackground" path="Textures/Interface/Dialog_Background.TGA" />
+	<Texture name="$parentBar" path="Textures/Interface/lifebar.tga" r="0" g="255" b="0" />
+</Frame>
+
+<Frame name="FloatingBars">
+	<Frame name="FloatingBar0" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar1" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar2" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar3" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar4" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar5" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar6" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar7" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar8" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar9" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar10" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar11" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar12" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar13" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar14" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar15" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar16" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar17" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar18" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar19" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar20" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar21" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar22" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar23" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar24" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar25" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar26" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar27" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar28" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar29" inherit="FloatingBarTemplate" />
+	<Frame name="FloatingBar30" inherit="FloatingBarTemplate" />
+
+	<Scripts>
+		<OnUpdate>
+			FloatingBar_OnUpdate();
+		</OnUpdate>
+	</Scripts>
+</Frame>
+</Ui>
